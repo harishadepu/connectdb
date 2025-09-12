@@ -1,10 +1,13 @@
 import mysql from 'mysql2'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const db = mysql.createConnection({
-    host:'localhost',
-    user:"root",
-    password:"hari1999",
-    database:"test"
+    host:process.env.host,
+    user:process.env.user,
+    password:process.env.password,
+    database:process.env.database,
+    connectTimeout: 10000
 })
 db.connect((err)=>{
     if (err) {
