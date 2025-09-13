@@ -40,3 +40,6 @@ app.put('/update/:id',async(req,res)=>{
         res.json({message:"data successfully updated", result})
     })
 })
+app.get('/',(req,res)=>{
+    res.send('hello world')
+})
