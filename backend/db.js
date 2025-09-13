@@ -1,4 +1,5 @@
 import mysql from 'mysql2'
+import fs from 'fs'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -6,7 +7,11 @@ const db = mysql.createConnection({
     host:process.env.host,
     user:process.env.user,
     password:process.env.password,
-    database:process.env.database
+    database:process.env.database,
+    ssl:{
+        ca: fs.readFileSync(process.env.ca)
+    }
+
 })
 db.connect((err)=>{
     if (err) {
